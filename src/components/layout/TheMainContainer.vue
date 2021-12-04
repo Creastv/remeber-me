@@ -19,8 +19,8 @@ export default {
 <style scoped>
 main {
   max-width: 1200px;
-  width: 100%;
-  margin: 0 auto;
+  width: calc(100% - 30px);
+  margin: 15px auto;
 }
 .defaultTitle {
   margin-bottom: 50px;
