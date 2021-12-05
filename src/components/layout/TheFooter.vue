@@ -8,5 +8,6 @@ footer {
   background-color: antiquewhite;
   padding: 10px 0;
   width: 100%;
+  text-align: center;
 }
 </style>

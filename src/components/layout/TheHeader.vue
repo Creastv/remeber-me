@@ -12,7 +12,7 @@ export default {};
 header {
   background-color: antiquewhite;
   width: 100%;
-  padding: 50px 0px;
+  padding: 10px 0px;
   margin-bottom: 50px;
   text-align: center;
 }

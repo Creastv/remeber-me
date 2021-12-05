@@ -1,35 +1,16 @@
 <template>
-  <TheHeader />
-  <TheMainContainer>
-    <CartBase>
-      <template #header> test </template>
-      <template #entry>
-        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nemo atque
-        quis itaque repellat odio perferendis veniam iusto alias voluptatibus,
-        id exercitationem totam reiciendis quo reprehenderit aperiam recusandae
-        laborum nesciunt quibusdam?
-      </template>
-      <template #footer> test </template>
-    </CartBase>
-    <CartBase>
-      <template #header> test </template>
-      <template #entry>
-        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nemo atque
-        quis itaque repellat odio perferendis veniam iusto alias voluptatibus,
-        id exercitationem totam reiciendis quo reprehenderit aperiam recusandae
-        laborum nesciunt quibusdam?
-      </template>
-      <template #footer> test </template>
-    </CartBase>
-  </TheMainContainer>
-  <TheFooter />
+  <the-header></the-header>
+  <the-main-container>
+    <the-resources></the-resources>
+  </the-main-container>
+  <the-footer></the-footer>
 </template>
 
 <script>
 import TheHeader from "./components/layout/TheHeader.vue";
 import TheMainContainer from "./components/layout/TheMainContainer.vue";
 import TheFooter from "./components/layout/TheFooter.vue";
-import CartBase from "./components/layout/elements/CartBase.vue";
+import TheResources from "./components/resources/TheResources.vue";
 
 export default {
   name: "App",
@@ -37,8 +18,8 @@ export default {
     TheHeader,
     TheMainContainer,
     TheFooter,
-    CartBase
-  }
+    TheResources,
+  },
 };
 </script>
 
