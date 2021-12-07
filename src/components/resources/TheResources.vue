@@ -29,38 +29,47 @@ export default {
   data() {
     return {
       selectedTab: "stored-resources",
-      resources: [
-        {
-          id: 1,
-          title: "laborum nesciunt quibusdam?",
-          desc: "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nemo atque quis itaque repellat odio perferendis veniam iusto alias voluptatibus, id exercitationem totam reiciendis quo reprehenderit aperiam recusandae laborum nesciunt quibusdam?",
-          link: "https://google.es",
-        },
-      ],
+      re: [],
     };
   },
   provide() {
     return {
-      resources: this.resources,
-      addResource: this.addResource,
+      resources: this.re,
     };
   },
+
   methods: {
+    getResources() {
+      fetch(
+        "https://rememberme-892e7-default-rtdb.europe-west1.firebasedatabase.app/resources.json"
+      )
+        .then((response) => {
+          if (response.ok) {
+            return response.json();
+          }
+        })
+        .then((data) => {
+          const res = [];
+          for (const id in data) {
+            this.re.unshift({
+              id: id,
+              title: data[id].title,
+              desc: data[id].desc,
+              link: data[id].link,
+            });
+          }
+          this.re = res;
+        });
+    },
     setSelectedTab(tab) {
       this.selectedTab = tab;
     },
     setActiveButton(button) {
       return this.selectedTab === button ? "btn-secundary" : "btn-primary";
     },
-    addResource(id, title, desc, link) {
-      this.resources.unshift({
-        id: id,
-        title: title,
-        desc: desc,
-        link: link,
-      });
-      this.selectedTab = 'stored-resources'
-    },
+  },
+  mounted() {
+    this.getResources();
   },
 };
 </script>

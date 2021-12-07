@@ -42,31 +42,44 @@
 
 <script>
 export default {
-  inject: ["addResource"],
   data() {
     return {
       infoValidation: "Check your inputs",
-      validInputs: true
+      validInputs: true,
     };
   },
   methods: {
+    addResourcesToFirebase() {
+      fetch(
+        "https://rememberme-892e7-default-rtdb.europe-west1.firebasedatabase.app/resources.json",
+        {
+          method: "POST",
+          header: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            title: this.$refs.title.value,
+            desc: this.$refs.desc.value,
+            link: this.$refs.link.value,
+          }),
+        }
+      );
+    },
     addRes() {
-      const idRes = new Date().toISOString;
       const titleRes = this.$refs.title.value;
       const descRes = this.$refs.desc.value;
-      const linkRes = this.$refs.link.value;
-
       if (titleRes == "" || descRes == "") {
         this.validInputs = false;
       } else {
         this.validInputs = true;
-        this.addResource(idRes, titleRes, descRes, linkRes);
+        this.addResourcesToFirebase();
+        // this.backToRecousesList();
         this.$refs.title.value = "";
         this.$refs.desc.value = "";
         this.$refs.link.value = "";
       }
-    }
-  }
+    },
+  },
 };
 </script>
 
