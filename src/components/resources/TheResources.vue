@@ -59,6 +59,7 @@ export default {
         desc: desc,
         link: link,
       });
+      this.selectedTab = 'stored-resources'
     },
   },
 };
